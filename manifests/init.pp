@@ -60,7 +60,7 @@ define mounts (
           ensure_resource('file', $dirtree, {'ensure' => 'directory'})
 
           exec { "/bin/mount '${dest}'":
-            unless  => "/bin/mount -l | /bin/grep '${dest}'",
+            unless  => "/bin/mountpoint -q '$dest'",
             require => [File[$dirtree], Fstab["fstab entry for ${source} to ${dest} as ${type}"]],
           }
         }
