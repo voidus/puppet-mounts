@@ -22,7 +22,7 @@ define mounts (
   }
 
   case $::operatingsystem {
-    redhat, centos, amazon, fedora: {
+    redhat, centos, amazon, fedora, ubuntu: {
 
       fstab { "fstab entry for ${source} to ${dest} as ${type}":
         ensure => $ensure,
